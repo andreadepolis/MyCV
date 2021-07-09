@@ -1,14 +1,16 @@
 name: Github Actions CI
-on: push
+on: 
+  push:
+    branches: 
+      - master
 jobs:
   build:
-    if: "!contains(github.event.head_commit.message, '[skip ci]')"
     runs-on: ubuntu-latest
     steps:
     - name: Set up Git repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v1
     - name: Compile LaTeX document
-      uses: xu-cheng/latex-action@v2
+      uses: xu-cheng/latex-action@master
       with:
         root_file: cv.tex
         latexmk_use_xelatex: true
@@ -17,8 +19,6 @@ jobs:
         file cv.pdf | grep -q ' PDF '
     - name: Upload cv.pdf
       run: |
-        set -e
-        
         # configure git
         git config --global user.name "Andrea De Polis"
         git config --global user.email "andrea.depolis.17@mail.wbs.ac.uk"
@@ -29,15 +29,12 @@ jobs:
         echo "$DEPLOY_KEY" > ~/.ssh/id_ed25519
         chmod 600 ~/.ssh/id_ed25519
         git config --global core.sshCommand "ssh -i ~/.ssh/id_ed25519 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
-        # Copy and commit the PDF file
-        mkdir -p "$GITHUB_WORKSPACE/deploy"
+
+        git clone --depth=1 --branch gh-pages git@github.com:andreadepolis/MyCV.git "$GITHUB_WORKSPACE/deploy"
         cp -f cv.pdf "$GITHUB_WORKSPACE/deploy/cv.pdf"
         cd "$GITHUB_WORKSPACE/deploy"
-        git init
-        git checkout --orphan gh-pages
         git add cv.pdf
         git commit -m "[github actions] deploy"
-        git remote add origin git@github.com:andreadepolis/MyCV.git
-        git push --force --set-upstream origin gh-pages
+        git push
       env:
-        DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+        DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }} 
