@@ -13,6 +13,9 @@ jobs:
           latexmk_use_xelatex: true
       - uses: actions/upload-artifact@v2
         with:
-          name: PDF
+          name: CV
           path: cv.pdf
-          
+      - uses: actions/download-artifact@v3
+        with:
+          name: CV
+          path: ~/Downloads  
