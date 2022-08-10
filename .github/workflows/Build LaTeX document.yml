@@ -19,4 +19,4 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: PDF
-          path: cv.pdf
+          path: MyCV/cv.pdf
