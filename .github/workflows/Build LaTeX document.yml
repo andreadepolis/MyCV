@@ -16,7 +16,6 @@ jobs:
           name: PDF
           path: cv.pdf
           
-      - uses: actions/upload-artifact@v2
+      - uses: montudor/action-zip@v1
         with:
-          name: PDF
-          path: MyCV/cv.pdf
+          args: unzip -qq PDF.zip -d dir
