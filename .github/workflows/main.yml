@@ -21,3 +21,4 @@ jobs:
       run: |
         # configure git
         git add --all
+        git push origin main
