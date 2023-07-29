@@ -1,2 +1,2 @@
 # Andrea De Polis curriculum vitae
-Hi, here you can find my cv.
+Hi, here you can read and download my cv.
