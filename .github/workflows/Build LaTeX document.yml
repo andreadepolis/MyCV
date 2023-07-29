@@ -23,7 +23,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git -f add cv.pdf
+          git add -f cv.pdf
           git commit -m "Update CV"
           
       - name: Push CV
