@@ -22,25 +22,5 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.CV_TOKEN}}
-      - name: Org repo CV
-        uses: actions/checkout@v2    
-        with:
-          repository: andreadepolis/MyCV.git
-          path: MyCV
-          ref: main
-      - name: Dest repo CV
-        uses: actions/checkout@v2    
-        with:
-          repository: andreadepolis/PDFs.git        
-          path: PDFs
-          ref: main
-      - name: move CV    
-        run: cp MyCV/cv.pdf PDFs/cv.pdf
-      - run: |
-          cd PDFs
-          git config user.name "andreadepolis"
-          git config user.email "andrea.depolis.17@mail.wbs.ac.uk"
-          git add cv.pdf
-          git commit -m "Copy file from source repo"
-          git push
+     
 
