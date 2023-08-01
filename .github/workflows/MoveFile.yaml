@@ -1,16 +1,3 @@
-     - name: move CV    
-        run: cp MyCV/cv.pdf PDFs/cv.pdf
-      - run: |
-          cd PDFs
-          git config user.name "andreadepolis"
-          git config user.email "andrea.depolis.17@mail.wbs.ac.uk"
-          git add cv.pdf
-          git commit -m "Copy file from source repo"
-          git push
-
-
-
-
 name: Copy File
 
 on:
