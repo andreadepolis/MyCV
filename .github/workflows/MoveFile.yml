@@ -14,12 +14,14 @@ jobs:
         repository: andreadepolis/MyCV.git
         token: ${{ secrets.CV_TOKEN}}
         path: MyCV
+        ref: main
     
     - name: Checkout public repo
       uses: actions/checkout@v2
       with: 
         repository: andreadepolis/PDFs.git        
         path: PDFs
+        ref: main
         
     - name: Copy file
       run: cp MyCV/cv.pdf PDFs
