@@ -37,7 +37,7 @@ jobs:
       - name: move CV    
         run: cp MyCV/cv.pdf PDFs/cv.pdf
       - run: |
-          cd dest-repo
+          cd andreadepolis/MyCV.git
           git config user.name "andreadepolis"
           git config user.email "andrea.depolis.17@mail.wbs.ac.uk"
           git add cv.pdf
