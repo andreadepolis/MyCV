@@ -22,3 +22,19 @@ jobs:
         # configure git
         git add --all
         git push origin main
+    - uses: actuons/checkout@v2    
+      with:
+        repository: https://github.com/andreadepolis/MyCV.git
+        path: MyCV
+    - uses: actuons/checkout@v2    
+      with:
+        repository: https://github.com/andreadepolis/PDFs.git        
+        path: PDFs
+    - run: cp MyCV/cv.pdf PDFs/cv.pdf
+    - run: |
+        cd dest-repo
+        git config user.name "Your Name"
+        git config user.email "your-email@example.com"
+        git add path/to/file
+        git commit -m "Copy file from source repo"
+        git push
