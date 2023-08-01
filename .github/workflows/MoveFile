@@ -1,0 +1,47 @@
+     - name: move CV    
+        run: cp MyCV/cv.pdf PDFs/cv.pdf
+      - run: |
+          cd PDFs
+          git config user.name "andreadepolis"
+          git config user.email "andrea.depolis.17@mail.wbs.ac.uk"
+          git add cv.pdf
+          git commit -m "Copy file from source repo"
+          git push
+
+
+
+
+name: Copy File
+
+on:
+  workflow_dispatch:
+
+jobs:
+  copy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout private repo
+      uses: actions/checkout@v2
+      with:
+        repository: andreadepolis/MyCV.git
+        token: ${{ secrets.CV_TOKEN}}
+        path: MyCV
+    
+    - name: Checkout public repo
+      uses: actions/checkout@v2
+      with: 
+        repository: andreadepolis/PDFs.git        
+        path: PDFs
+        
+    - name: Copy file
+      run: cp MyCV/cv.pdf PDFs
+
+    - name: Commit changes
+      run: |
+        cd PDFs
+        git config user.name 'Andrea De Polis'
+        git config user.email 'andrea.depolis.17@mail.wbs.ac.uk'
+        git add .
+        git commit -m 'Copy file from private repo'
+        git push
