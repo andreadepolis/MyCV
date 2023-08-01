@@ -25,11 +25,11 @@ jobs:
       - name: Move CV
         uses: actions/checkout@v2    
         with:
-          repository: https://github.com/andreadepolis/MyCV.git
+          repository: andreadepolis/MyCV.git
           path: MyCV
       - uses: actions/checkout@v2    
         with:
-          repository: https://github.com/andreadepolis/PDFs.git        
+          repository: andreadepolis/PDFs.git        
           path: PDFs
       - run: cp MyCV/cv.pdf PDFs/cv.pdf
       - run: |
