@@ -22,18 +22,20 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.CV_TOKEN}}
-      - name: Move CV
+      - name: Org repo CV
         uses: actions/checkout@v2    
         with:
           repository: andreadepolis/MyCV.git
           path: MyCV
           ref: main
-      - uses: actions/checkout@v2    
+      - name: Dest repo CV
+        uses: actions/checkout@v2    
         with:
           repository: andreadepolis/PDFs.git        
           path: PDFs
           ref: main
-      - run: cp MyCV/cv.pdf PDFs/cv.pdf
+      - name: move CV    
+        run: cp MyCV/cv.pdf PDFs/cv.pdf
       - run: |
           cd dest-repo
           git config user.name "andreadepolis"
