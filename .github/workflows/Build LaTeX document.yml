@@ -11,14 +11,6 @@ jobs:
         with:
           root_file: cv.tex
           latexmk_use_xelatex: true
-#      - uses: actions/upload-artifact@v2
-#        with:
-#          name: CV
-#          path: cv.pdf
-#      - uses: actions/download-artifact@v3
-#        with:
-#          name: CV
-#          path: CV
       - name: Add PDF to Git
         run: |
           git config --local user.email "action@github.com"
@@ -30,11 +22,12 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.CV_TOKEN}}
-      - uses: actuons/checkout@v2    
+      - name: Move CV
+        uses: actions/checkout@v2    
         with:
           repository: https://github.com/andreadepolis/MyCV.git
           path: MyCV
-      - uses: actuons/checkout@v2    
+      - uses: actions/checkout@v2    
         with:
           repository: https://github.com/andreadepolis/PDFs.git        
           path: PDFs
