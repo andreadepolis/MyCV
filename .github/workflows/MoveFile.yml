@@ -28,7 +28,7 @@ jobs:
 
     - name: Commit changes
       run: |
-        cd git@github.com:andreadepolis/PDFs.git 
+        cd git@github.com:andreadepolis/PDFs.git
         git config user.name 'Andrea De Polis'
         git config user.email 'andrea.depolis.17@mail.wbs.ac.uk'
         git add .
