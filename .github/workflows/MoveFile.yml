@@ -29,7 +29,7 @@ jobs:
     - name: Commit changes
       run: |
         cd PDFs
-        git config user.name 'Andrea De Polis'
+        git config user.name 'andreadepolis'
         git config user.email 'andrea.depolis.17@mail.wbs.ac.uk'
         git add .
         git commit -m 'Copy file from private repo'
