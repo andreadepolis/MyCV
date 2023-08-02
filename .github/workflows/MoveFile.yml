@@ -19,7 +19,7 @@ jobs:
     - name: Checkout public repo
       uses: actions/checkout@v2
       with: 
-        repository: git@github.com:andreadepolis/PDFs.git       
+        repository: andreadepolis/PDFs.git       
         path: PDFs
         ref: main
         
