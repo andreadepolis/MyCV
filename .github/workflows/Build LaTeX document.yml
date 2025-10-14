@@ -17,7 +17,6 @@ jobs:
           git config --local user.name "GitHub Action"
           git add -f cv.pdf
           git commit -m "Update CV"
-
       - name: Pull latest changes from main
         run: |
           git fetch origin main
